@@ -38,9 +38,9 @@ def create_shell(target):
         if r.status_code == 200:
             return True
         else:
-            print("[-] %s Shell创建失败")
+            print("[-] %s Shell创建失败" % target)
     except Exception as e:
-        print("[-] %s Shell创建失败")
+        print("[-] %s Shell创建失败" % target)
         return  False
 
 def upload_shell(target,file):
